@@ -65,8 +65,8 @@ def get_queue(queue_name):
         return Queue(queue_name)
 
 
-@blueprint.before_app_first_request
-def setup_rq_connection():
+# @blueprint.before_app_first_request
+def setup_rq_connection(current_app):
     # It's the only place where we can safely define default value for web background
     # since It is used in template
     current_app.config.setdefault('RQ_DASHBOARD_WEB_BACKGROUND', 'black')
